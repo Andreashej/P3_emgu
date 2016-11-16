@@ -4,38 +4,35 @@ using Emgu.CV;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
 using System.Drawing;
+using Emgu.Util;
+using Emgu.CV.Features2D;
 
 
-public class edgeDetection {
-	public Mat src;
-	public Mat detectedEdges;
-	public Mat dst;
+public class EdgeDetection {
+	public Image<Gray, byte> srcImg;
+	public Image<Gray,byte> detectedEdges;
 
-	public edgeDetection (string filename) {
-		src = CvInvoke.Imread("../Resources/img/" + filename, LoadImageType.Grayscale);
-		dst.Create(src.Height, src.Width, src.Depth, src.NumberOfChannels);
+	public EdgeDetection (string filename) {
+		srcImg = new Image<Gray, byte>("Assets/Resources/Images/" + filename);
+		srcImg = srcImg.Resize(256, 256,Inter.Cubic);
 	}
 
-	public void detectEdges() {
-		//Perform Gaussian-blur
-		CvInvoke.GaussianBlur(src, detectedEdges, new Size(3, 3), 50);
-
+	public void DetectEdges() {
+		
 		//Detect Edges
-		CvInvoke.Canny(detectedEdges, dst, 50, 200);
+		detectedEdges = srcImg.Canny(50, 200);
 	}
 
-	public Texture2D returnAsTexture() {
-		Texture2D img = new Texture2D(dst.Height, dst.Width);
+	public Texture2D ReturnAsTexture() {
+		Texture2D img = new Texture2D(detectedEdges.Height, detectedEdges.Width);
 
-		Image<Gray, byte> image = dst.ToImage<Gray, byte>();
-		Bitmap bmp = image.ToBitmap();
-
-		for(int y = 0; y < img.height; y++) {
-			for(int x = 0; x < img.width; x++) {
-				UnityEngine.Color color = new UnityEngine.Color(bmp.GetPixel(x,y).R, bmp.GetPixel(x,y).G, bmp.GetPixel(x,y).B);
+		for (int y = 0; y < img.height-1; y++) {
+			for (int x = 0; x < img.width-1; x++) {
+				UnityEngine.Color color = new UnityEngine.Color((int)detectedEdges[x,y].Intensity, (int)detectedEdges[x,y].Intensity, (int)detectedEdges[x,y].Intensity);
 				img.SetPixel(x, y, color);
 			}
 		}
+		
 		img.Apply();
 
 		return img;
