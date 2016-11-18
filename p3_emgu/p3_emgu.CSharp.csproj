@@ -81,8 +81,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\EdgeDetection.cs" />
     <Compile Include="Assets\Scripts\applyImage.cs" />
+    <Compile Include="Assets\Scripts\edgeDetection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Emgu.CV.World.xml" />

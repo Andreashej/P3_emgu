@@ -1,11 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Emgu.CV;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
-using System.Drawing;
-using Emgu.Util;
-using Emgu.CV.Features2D;
 
 
 public class EdgeDetection {
@@ -14,13 +10,15 @@ public class EdgeDetection {
 
 	public EdgeDetection (string filename) {
 		srcImg = new Image<Gray, byte>("Assets/Resources/Images/" + filename);
-		srcImg = srcImg.Resize(256, 256,Inter.Cubic);
+		//srcImg = srcImg.Resize(256, 256,Inter.Cubic);
 	}
 
 	public void DetectEdges() {
-		
+		//Gaussianblur
+		detectedEdges = srcImg.SmoothGaussian(5);
+
 		//Detect Edges
-		detectedEdges = srcImg.Canny(50, 200);
+		detectedEdges = detectedEdges.Canny(30, 150);
 	}
 
 	public Texture2D ReturnAsTexture() {
@@ -28,7 +26,7 @@ public class EdgeDetection {
 
 		for (int y = 0; y < img.height-1; y++) {
 			for (int x = 0; x < img.width-1; x++) {
-				UnityEngine.Color color = new UnityEngine.Color((int)detectedEdges[x,y].Intensity, (int)detectedEdges[x,y].Intensity, (int)detectedEdges[x,y].Intensity);
+				Color color = new Color((int)detectedEdges[x,y].Intensity, (int)detectedEdges[x,y].Intensity, (int)detectedEdges[x,y].Intensity);
 				img.SetPixel(x, y, color);
 			}
 		}
