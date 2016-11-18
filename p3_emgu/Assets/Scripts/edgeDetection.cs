@@ -10,24 +10,33 @@ public class EdgeDetection {
 
 	public EdgeDetection (string filename) {
 		srcImg = new Image<Gray, byte>("Assets/Resources/Images/" + filename);
-		//srcImg = srcImg.Resize(256, 256,Inter.Cubic);
 	}
 
-	public void DetectEdges() {
+	public void DetectEdges () {
 		//Gaussianblur
-		detectedEdges = srcImg.SmoothGaussian(5);
+		detectedEdges = srcImg.SmoothGaussian(9);
+
+		detectedEdges = detectedEdges.ThresholdBinaryInv(new Gray(120), new Gray(255));
 
 		//Detect Edges
-		detectedEdges = detectedEdges.Canny(30, 150);
+		detectedEdges = detectedEdges.Canny(70, 50);
+	}
+
+	public float getHeight() {
+		return srcImg.Height;
+	}
+
+	public float getWidth() {
+		return srcImg.Width;
 	}
 
 	public Texture2D ReturnAsTexture() {
-		Texture2D img = new Texture2D(detectedEdges.Height, detectedEdges.Width);
+		Texture2D img = new Texture2D(detectedEdges.Width, detectedEdges.Height);
 
-		for (int y = 0; y < img.height-1; y++) {
-			for (int x = 0; x < img.width-1; x++) {
-				Color color = new Color((int)detectedEdges[x,y].Intensity, (int)detectedEdges[x,y].Intensity, (int)detectedEdges[x,y].Intensity);
-				img.SetPixel(x, y, color);
+		for (int y = 0; y < img.height; y++) {
+			for (int x = 0; x < img.width; x++) {
+				Color color = new Color((float)detectedEdges[y,x].Intensity/256, (float)detectedEdges[y,x].Intensity/256, (float)detectedEdges[y,x].Intensity/256);
+				img.SetPixel(x, y , color);
 			}
 		}
 		
@@ -36,5 +45,4 @@ public class EdgeDetection {
 		return img;
 	}
 
-	
 }
