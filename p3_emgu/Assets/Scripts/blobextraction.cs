@@ -8,15 +8,14 @@ public class blobextraction : MonoBehaviour {
 
 	public RawImage rawimage;
 	public static string imagePath() {
-		return string.Format("{0}/Resources/photo.png", 
-			Application.dataPath);
+		return string.Format("Assets/Resources/rasmus.png");
 	}
 
 	public Texture2D returnAsTexture (Image<Gray, byte> imgInput) {
-		Texture2D img = new Texture2D(imgInput.Height, imgInput.Width);
-		for (int y = 0; y < img.height - 1; y++) {
-			for (int x = 0; x < img.width - 1; x++) {
-				UnityEngine.Color color = new UnityEngine.Color((int)imgInput[x,y].Intensity, (int)imgInput[x,y].Intensity, (int)imgInput[x,y].Intensity);
+		Texture2D img = new Texture2D(imgInput.Width, imgInput.Height);
+		for (int y = 0; y < img.height; y++) {
+			for (int x = 0; x < img.width; x++) {
+				Color color = new Color((float)imgInput[y,x].Intensity/256, (float)imgInput[y,x].Intensity/256, (float)imgInput[y,x].Intensity/256);
 				img.SetPixel(x, y, color);
 			}
 		}
@@ -27,11 +26,16 @@ public class blobextraction : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		
 	
 		string imgPath = imagePath ();
 		Mat srcImage = new Mat(imgPath, 0);
 
 		Image<Gray, byte> blobImage = srcImage.ToImage<Gray, byte>();
+		//blobImage = blobImage.Resize(256,256,Emgu.CV.CvEnum.Inter.Cubic);
+
+		GetComponent<RectTransform>().sizeDelta = new Vector2(blobImage.Width, blobImage.Height);
 
 		rawimage.texture = returnAsTexture(blobImage);
 		rawimage.material.mainTexture = returnAsTexture(blobImage);

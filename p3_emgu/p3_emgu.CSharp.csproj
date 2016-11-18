@@ -82,6 +82,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\blobdetection.cs" />
+    <Compile Include="Assets\Scripts\blobextraction.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Plugins\Emgu.CV.World.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
