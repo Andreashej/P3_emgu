@@ -3,11 +3,13 @@ using UnityEngine.UI;
 using System.Collections;
 using Emgu.CV;
 using Emgu.CV.Structure;
+using Emgu.CV.Features2D;
+using Emgu.CV.Util;
 
 public class blobextraction : MonoBehaviour {
 
 	public RawImage rawimage;
-	public static string imagePath() {
+    public static string imagePath() {
 		return string.Format("Assets/Resources/rasmus.png");
 	}
 
@@ -24,8 +26,17 @@ public class blobextraction : MonoBehaviour {
 		return img;
 	}
 
-	// Use this for initialization
-	void Start () {
+   /* public static void DrawKeyPoints(
+        IInputArray image,
+        VectorOfKeyPoint keypoints,
+        IInputOutputArray outImage,
+        Bgr color,
+        Features2DToolbox.KeypointDrawType type
+        ) {    
+    }*/
+
+    // Use this for initialization
+    void Start () {
 
 		
 	
@@ -33,9 +44,14 @@ public class blobextraction : MonoBehaviour {
 		Mat srcImage = new Mat(imgPath, 0);
 
 		Image<Gray, byte> blobImage = srcImage.ToImage<Gray, byte>();
-		//blobImage = blobImage.Resize(256,256,Emgu.CV.CvEnum.Inter.Cubic);
+        //blobImage = blobImage.Resize(256,256,Emgu.CV.CvEnum.Inter.Cubic);
 
-		GetComponent<RectTransform>().sizeDelta = new Vector2(blobImage.Width, blobImage.Height);
+        // Detect blobs
+        public VectorOfKeyPoint = new VectorOfKeyPoint();
+
+        Features2DToolbox.DrawKeypoints(blobImage, );
+
+        GetComponent<RectTransform>().sizeDelta = new Vector2(blobImage.Width, blobImage.Height);
 
 		rawimage.texture = returnAsTexture(blobImage);
 		rawimage.material.mainTexture = returnAsTexture(blobImage);
