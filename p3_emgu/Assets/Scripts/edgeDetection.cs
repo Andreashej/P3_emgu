@@ -14,12 +14,12 @@ public class EdgeDetection {
 
 	public void DetectEdges () {
 		//Gaussianblur
-		detectedEdges = srcImg.SmoothGaussian(9);
+		detectedEdges = srcImg.SmoothGaussian(15);
 
-		detectedEdges = detectedEdges.ThresholdBinaryInv(new Gray(120), new Gray(255));
+		//detectedEdges = detectedEdges.ThresholdBinaryInv(new Gray(120), new Gray(255));
 
 		//Detect Edges
-		detectedEdges = detectedEdges.Canny(70, 50);
+		detectedEdges = detectedEdges.Canny(10, 40);
 	}
 
 	public float getHeight() {
@@ -44,5 +44,9 @@ public class EdgeDetection {
 
 		return img;
 	}
+
+	public Image<Gray, byte> returnToRonny() {
+		return detectedEdges;
+	} 
 
 }
