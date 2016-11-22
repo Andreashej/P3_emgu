@@ -5,10 +5,14 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.CV.Features2D;
 using Emgu.CV.Util;
+using Emgu.CV.Structure;
 
 public class blobextraction : MonoBehaviour {
 
 	public RawImage rawimage;
+	public VectorOfKeyPoint test;
+	public Image<Gray, byte> outputImage;
+
     public static string imagePath() {
 		return string.Format("Assets/Resources/rasmus.png");
 	}
@@ -47,14 +51,15 @@ public class blobextraction : MonoBehaviour {
         //blobImage = blobImage.Resize(256,256,Emgu.CV.CvEnum.Inter.Cubic);
 
         // Detect blobs
-        public VectorOfKeyPoint = new VectorOfKeyPoint();
+        vectorThingy = new VectorOfKeyPoint();
+		bgrThingy = Bgr (0,0,0);
 
-        Features2DToolbox.DrawKeypoints(blobImage, );
+		Features2DToolbox.DrawKeypoints(blobImage, vectorThingy, outputImage, bgrThingy,4);
 
         GetComponent<RectTransform>().sizeDelta = new Vector2(blobImage.Width, blobImage.Height);
 
-		rawimage.texture = returnAsTexture(blobImage);
-		rawimage.material.mainTexture = returnAsTexture(blobImage);
+		rawimage.texture = returnAsTexture(outputImage);
+		rawimage.material.mainTexture = returnAsTexture(outputImage);
 
 	}
 	
