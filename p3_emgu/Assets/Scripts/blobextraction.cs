@@ -5,13 +5,12 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.CV.Features2D;
 using Emgu.CV.Util;
-using Emgu.CV.Structure;
+using Emgu.CV.VideoSurveillance;
 
 public class blobextraction : MonoBehaviour {
 
 	public RawImage rawimage;
-	public VectorOfKeyPoint test;
-	public Image<Gray, byte> outputImage;
+	public Image<Gray, byte> outputImage, blobImage;
 
     public static string imagePath() {
 		return string.Format("Assets/Resources/rasmus.png");
@@ -30,32 +29,27 @@ public class blobextraction : MonoBehaviour {
 		return img;
 	}
 
-   /* public static void DrawKeyPoints(
-        IInputArray image,
-        VectorOfKeyPoint keypoints,
-        IInputOutputArray outImage,
-        Bgr color,
-        Features2DToolbox.KeypointDrawType type
-        ) {    
-    }*/
-
     // Use this for initialization
     void Start () {
-
-		
 	
-		string imgPath = imagePath ();
-		Mat srcImage = new Mat(imgPath, 0);
+		//Read image
+		string imgPath = imagePath();
+		blobImage = new Image<Gray, byte>(imgPath);
+		outputImage = blobImage.Clone();
 
-		Image<Gray, byte> blobImage = srcImage.ToImage<Gray, byte>();
-        //blobImage = blobImage.Resize(256,256,Emgu.CV.CvEnum.Inter.Cubic);
+		//Set keypoiny colour
+		Bgr keypointColour = new Bgr (0,0,255);
+		
+		//Create the new blob detector
+		SimpleBlobDetector blobs = new SimpleBlobDetector();
 
-        // Detect blobs
-        vectorThingy = new VectorOfKeyPoint();
-		bgrThingy = Bgr (0,0,0);
+		//Detect blobs in image and assign to keypoint vector
+		VectorOfKeyPoint keypointVector = new VectorOfKeyPoint(blobs.Detect(blobImage));
 
-		Features2DToolbox.DrawKeypoints(blobImage, vectorThingy, outputImage, bgrThingy,4);
-
+		//Draw the keypoints to outputImage
+		Features2DToolbox.DrawKeypoints(outputImage, keypointVector, outputImage, keypointColour, Features2DToolbox.KeypointDrawType.Default); //I think the problem is that nothing is drawn on the outputimage here...
+		
+		//Apply the blob detected image to texture
         GetComponent<RectTransform>().sizeDelta = new Vector2(blobImage.Width, blobImage.Height);
 
 		rawimage.texture = returnAsTexture(outputImage);
