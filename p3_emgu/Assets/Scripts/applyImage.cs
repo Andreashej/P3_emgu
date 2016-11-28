@@ -9,7 +9,7 @@ public class applyImage : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		image = new EdgeDetection("rasmus2.jpg");
+		image = new EdgeDetection("andreas_scs.jpg");
 
 		image.DetectEdges();
 
