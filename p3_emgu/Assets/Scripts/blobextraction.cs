@@ -5,7 +5,7 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.CV.Features2D;
 using Emgu.CV.Util;
-using Emgu.CV.VideoSurveillance;
+using AForge;
 
 public class blobextraction : MonoBehaviour {
 
@@ -13,7 +13,7 @@ public class blobextraction : MonoBehaviour {
 	public Image<Gray, byte> outputImage, blobImage;
 
     public static string imagePath() {
-		return string.Format("Assets/Resources/rasmus.png");
+		return string.Format("Assets/Resources/test2.png");
 	}
 
 	public Texture2D returnAsTexture (Image<Gray, byte> imgInput) {
@@ -24,7 +24,7 @@ public class blobextraction : MonoBehaviour {
 				img.SetPixel(x, y, color);
 			}
 		}
-
+		
 		img.Apply();
 		return img;
 	}
@@ -37,19 +37,19 @@ public class blobextraction : MonoBehaviour {
 		blobImage = new Image<Gray, byte>(imgPath);
 		outputImage = blobImage.Clone();
 
-		//Set keypoiny colour
-		Bgr keypointColour = new Bgr (0,0,255);
+		////Set keypoiny colour
+		//Bgr keypointColour = new Bgr (0,0,255);
 		
-		//Create the new blob detector
-		SimpleBlobDetector blobs = new SimpleBlobDetector();
+		////Create the new blob detector
+		//SimpleBlobDetector blobs = new SimpleBlobDetector();
 
-		//Detect blobs in image and assign to keypoint vector
-		VectorOfKeyPoint keypointVector = new VectorOfKeyPoint(blobs.Detect(blobImage));
+		////Detect blobs in image and assign to keypoint vector
+		//VectorOfKeyPoint keypointVector = new VectorOfKeyPoint(blobs.Detect(blobImage));
 
-		//Draw the keypoints to outputImage
-		Features2DToolbox.DrawKeypoints(outputImage, keypointVector, outputImage, keypointColour, Features2DToolbox.KeypointDrawType.Default); //I think the problem is that nothing is drawn on the outputimage here...
+		////Draw the keypoints to outputImage
+		//Features2DToolbox.DrawKeypoints(outputImage, keypointVector, outputImage, keypointColour, Features2DToolbox.KeypointDrawType.Default); //I think the problem is that nothing is drawn on the outputimage here...
 		
-		//Apply the blob detected image to texture
+		////Apply the blob detected image to texture
         GetComponent<RectTransform>().sizeDelta = new Vector2(blobImage.Width, blobImage.Height);
 
 		rawimage.texture = returnAsTexture(outputImage);
