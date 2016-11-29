@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/photo.unity
-=======
-- path: Assets/Scenes/testScene.unity
->>>>>>> SkinColorSegmentation
+- path: Assets/Scenes/LiveSCS.unity
   isLoaded: 1
   isActive: 1

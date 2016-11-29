@@ -43,12 +43,12 @@ public class takePhoto : MonoBehaviour {
 
 			byte[] bytes = destTexture.EncodeToPNG();
 
-			string filename = ScreenShotName();
+			//string filename = ScreenShotName();
 
-			System.IO.File.WriteAllBytes(filename, bytes);
-			Debug.Log(string.Format("Took screenshot to: {0}", filename));
+			//System.IO.File.WriteAllBytes(filename, bytes);
+			//Debug.Log(string.Format("Took screenshot to: {0}", filename));
 
-			takeHiResShot = false;
+			//takeHiResShot = false;
 		}
 	}
 }

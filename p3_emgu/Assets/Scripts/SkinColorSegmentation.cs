@@ -5,18 +5,30 @@ using System.Text;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.CV.CvEnum;
+using System.IO;
+using System.Drawing;
 
 namespace Assets.Scripts
 {
     class SkinColorSegmentation
     {
-        Mat source;
+        public Mat source = new Mat();
         Mat result;
 
         public SkinColorSegmentation(Mat src)
         {
             source = src;
         }
+
+		public SkinColorSegmentation(byte[] byteImg) {
+			//CvInvoke.Imdecode(byteImg, LoadImageType.Color, source);
+			MemoryStream ms = new MemoryStream(byteImg);
+			Bitmap bmp = new Bitmap(ms);
+			bmp.Save("Assets/Resources/test1.jpg");
+			Image<Bgr, byte> img = new Image<Bgr, byte>(bmp);
+			source = img.Mat;
+			
+		}
 
         private bool RuleRGB(double R, double G, double B)
         {
@@ -45,7 +57,7 @@ namespace Assets.Scripts
 
         public Image<Gray,Byte> GetSkinRegion()
         {
-            Mat result = source.Clone();
+            result = source.Clone();
             Image<Gray, Byte> resultImage = result.ToImage<Gray, Byte>();
             Mat srcYCbCr = new Mat();
             Mat srcHSV = new Mat();

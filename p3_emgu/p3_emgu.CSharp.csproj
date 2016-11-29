@@ -13,21 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-<<<<<<< HEAD
     <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.2f2</UnityVersion>
     <RootNamespace></RootNamespace>
-=======
-    <CompilerResponseFile>
-    </CompilerResponseFile>
-    <UnityProjectType>Game:1</UnityProjectType>
-    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
-    <UnityVersion>5.4.2f2</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
->>>>>>> SkinColorSegmentation
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -91,18 +81,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
+    <Compile Include="Assets\Scripts\ImageAcquisition.cs" />
+    <Compile Include="Assets\Scripts\LiveSCS.cs" />
+    <Compile Include="Assets\Scripts\MP_Asset.cs" />
+    <Compile Include="Assets\Scripts\MoustachePlacement.cs" />
+    <Compile Include="Assets\Scripts\SCS_Asset.cs" />
+    <Compile Include="Assets\Scripts\SkinColorSegmentation.cs" />
+    <Compile Include="Assets\Scripts\Triangle.cs" />
     <Compile Include="Assets\Scripts\takePhoto.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
-=======
-    <Compile Include="Assets\Scripts\MoustachePlacement.cs" />
-    <Compile Include="Assets\Scripts\MP_Asset.cs" />
-    <Compile Include="Assets\Scripts\SCS_Asset.cs" />
-    <Compile Include="Assets\Scripts\SkinColorSegmentation.cs" />
-    <Compile Include="Assets\Scripts\Triangle.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
-</Project>
->>>>>>> SkinColorSegmentation
