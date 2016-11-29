@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 0db9ce574a8734c39bd602e5bbd296aa
 folderAsset: yes
 timeCreated: 1479296225
+=======
+guid: c77bf29a5e5cb504c9ddbf4e40362d43
+folderAsset: yes
+timeCreated: 1479463548
+>>>>>>> SkinColorSegmentation
 licenseType: Free
 DefaultImporter:
   userData: 
