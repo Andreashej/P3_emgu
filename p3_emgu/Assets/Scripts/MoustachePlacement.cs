@@ -26,7 +26,7 @@ namespace Assets.Scripts
         {
             if (GetOrientation())
             {
-                zRotation = Math.Acos(workingImage.GetArea() / reference.GetArea());
+                zRotation = Math.Acos(workingImage.GetArea() / reference.GetArea()); // if it doesn't work, change workingImage with reference
             }
             else
             {

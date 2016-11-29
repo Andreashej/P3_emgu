@@ -87,10 +87,10 @@ namespace Assets.Scripts
                     {
                         resultImage[i, j] = new Gray(0);
                     }
-                    /*else
+                    else
                     {
-                        resultImage[i, j] = new Gray(0);
-                    }*/
+                        resultImage[i, j] = new Gray(255);
+                    }
                 }
             }
 

@@ -30,7 +30,7 @@ public class SCS_Asset : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        string srcPath = "Assets/Resources/rajmuj.png";
+        string srcPath = "Assets/Resources/skorf.jpg";
         Mat srcMat = new Mat(srcPath, LoadImageType.Color);
         var scs = new SkinColorSegmentation(srcMat);
         Image<Gray, byte> result = scs.GetSkinRegion();
@@ -38,6 +38,7 @@ public class SCS_Asset : MonoBehaviour
         rawImage.texture = returnAsTexture(result);
         rawImage.material.mainTexture = returnAsTexture(result);
 
+        CvInvoke.Imwrite("Assets/Resources/skorfthresholded.jpg", result);
 
     }
 	
