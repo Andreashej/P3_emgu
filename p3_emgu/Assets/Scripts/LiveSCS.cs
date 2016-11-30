@@ -86,7 +86,9 @@ public class LiveSCS : MonoBehaviour {
 			Image<Gray,byte> segmentedImage = scs.GetSkinRegion();
 
 			Texture2D tex = returnAsTexture(segmentedImage);
-			
+			rawImage.texture = tex;
+			rawImage.material.mainTexture = tex;
+
 			takeHiResShot = false;
 		}
 	}
