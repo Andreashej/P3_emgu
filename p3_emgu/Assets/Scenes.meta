@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 666f2bb737d934bdcaeab626c9cb4fc0
 folderAsset: yes
 timeCreated: 1479296235
@@ -8,6 +9,11 @@ guid: 1abf230e2c573a84b9a813e4b355515d
 folderAsset: yes
 timeCreated: 1479463555
 >>>>>>> SkinColorSegmentation
+=======
+guid: 45322d6c9fa452a409d481a7cf75b34a
+folderAsset: yes
+timeCreated: 1479299917
+>>>>>>> edge_detection
 licenseType: Free
 DefaultImporter:
   userData: 
