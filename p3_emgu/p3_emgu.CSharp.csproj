@@ -12,11 +12,7 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-<<<<<<< HEAD
-    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-=======
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
->>>>>>> edge_detection
     <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
@@ -85,7 +81,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="Assets\Scripts\ImageAcquisition.cs" />
     <Compile Include="Assets\Scripts\LiveSCS.cs" />
     <Compile Include="Assets\Scripts\MP_Asset.cs" />
@@ -93,14 +88,12 @@
     <Compile Include="Assets\Scripts\SCS_Asset.cs" />
     <Compile Include="Assets\Scripts\SkinColorSegmentation.cs" />
     <Compile Include="Assets\Scripts\Triangle.cs" />
-    <Compile Include="Assets\Scripts\takePhoto.cs" />
-=======
     <Compile Include="Assets\Scripts\applyImage.cs" />
     <Compile Include="Assets\Scripts\edgeDetection.cs" />
+    <Compile Include="Assets\Scripts\takePhoto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Emgu.CV.World.xml" />
->>>>>>> edge_detection
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

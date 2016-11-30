@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Scenes/LiveSCS.unity
-=======
-- path: Assets/Scenes/edge_detection.unity
->>>>>>> edge_detection
   isLoaded: 1
   isActive: 1

@@ -84,8 +84,16 @@ public class LiveSCS : MonoBehaviour {
 			SkinColorSegmentation scs = new SkinColorSegmentation(bytes);
 
 			Image<Gray,byte> segmentedImage = scs.GetSkinRegion();
+			
+			segmentedImage = segmentedImage.ThresholdBinaryInv(new Gray(150), new Gray(255));
 
-			Texture2D tex = returnAsTexture(segmentedImage);
+			EdgeDetection ed = new EdgeDetection(segmentedImage);
+
+			ed.DetectEdges();
+			
+			GetComponent<RectTransform>().Rotate(new Vector3(0, 180, 180));
+
+			Texture2D tex = ed.ReturnAsTexture();
 			rawImage.texture = tex;
 			rawImage.material.mainTexture = tex;
 

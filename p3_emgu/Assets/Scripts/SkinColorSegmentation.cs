@@ -97,11 +97,11 @@ namespace Assets.Scripts
 
                     if ( !(rgb && yCbCr && hsv))
                     {
-                        resultImage[i, j] = new Gray(0);
+                        resultImage[i, j] = new Gray(255);
                     }
                     else
                     {
-                        resultImage[i, j] = new Gray(255);
+                        resultImage[i, j] = new Gray(0);
                     }
                 }
             }

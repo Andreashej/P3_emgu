@@ -11,6 +11,10 @@ public class EdgeDetection {
 		srcImg = new Image<Gray, byte>("Assets/Resources/Images/" + filename);
 	}
 
+	public EdgeDetection (Image<Gray, byte> img) {
+		srcImg = img;
+	}
+
 	public void DetectEdges () {
 		//Gaussianblur
 		detectedEdges = srcImg.SmoothGaussian(15);
@@ -25,10 +29,10 @@ public class EdgeDetection {
 		Mat element = CvInvoke.GetStructuringElement(ElementShape.Cross, new System.Drawing.Size(5,5), new System.Drawing.Point(-1,-1));
 		MCvScalar scalar = new MCvScalar(20);
 		
-		detectedEdges = detectedEdges.MorphologyEx(MorphOp.Close, element, new System.Drawing.Point(-1, -1), 5, BorderType.Default, scalar);
+		//detectedEdges = detectedEdges.MorphologyEx(MorphOp.Close, element, new System.Drawing.Point(-1, -1), 3, BorderType.Default, scalar);
 
-		//detectedEdges = detectedEdges.Dilate(5);
-		//detectedEdges = detectedEdges.Erode(3);
+		detectedEdges = detectedEdges.Dilate(5);
+		detectedEdges = detectedEdges.Erode(3);
 	}
 
 	public float getHeight() {
