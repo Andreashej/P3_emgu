@@ -22,6 +22,11 @@ namespace Assets.Scripts
         {
             return Math.Sqrt(Math.Pow((b.X - a.X), 2) + Math.Pow((b.Y - a.Y), 2));
         }
+
+        public Point GetDirectionFromAToB(Point a, Point b)
+        {
+            return new Point((b.X - a.X), (b.Y - a.Y));
+        }
         
         public void SetAreaHeron()
         {
@@ -41,6 +46,24 @@ namespace Assets.Scripts
         public double GetArea()
         {
             return area;
+        }
+
+        public Point GetHeightBase()
+        {
+            Point directionPoint = GetDirectionFromAToB(leftEye, rightEye);
+            double[] directionVector = { (directionPoint.X) / 100, (directionPoint.Y) / 100 };
+            double[] normalVector = {directionVector[1]*(-1), directionVector[0]};
+
+            for(int i = 0; i<100; i++)
+            {
+                for(int j = 0; j<100; j++)
+                {
+                    if(leftEye.X+i*directionVector[0] == mouth.X+j*normalVector[0] && leftEye.Y+i*directionVector[1] == mouth.Y + j * normalVector[1])
+                    {
+
+                    }
+                }
+            }
         }
 
         public double GetEyeToBase()

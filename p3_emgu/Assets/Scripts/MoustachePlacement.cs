@@ -22,6 +22,12 @@ namespace Assets.Scripts
             return reference.GetEyeToBase() < workingImage.GetEyeToBase(); //if true, the rotation is positive (counterclockwise)
         }
 
+
+        public void SetYRotation()
+        {
+
+        }
+
         public void SetZRotation()
         {
             if (GetOrientation())
