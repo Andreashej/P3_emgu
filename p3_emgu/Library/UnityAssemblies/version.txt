@@ -1,2 +1,6 @@
 5.4.2f2:2.3.0.0
 StandaloneWindows
+A:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll
+A:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
+A:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
+A:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll
