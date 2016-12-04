@@ -26,17 +26,7 @@ public class LiveSCS : MonoBehaviour {
 		rawImage.texture = webcamTexture;
 		rawImage.material.mainTexture = webcamTexture;
 		webcamTexture.Play();
-		/*
-		byte[] byteImg = ReturnTextureAsBytes(webcamTexture);
 
-		SkinColorSegmentation scs = new SkinColorSegmentation(byteImg);
-
-		Image<Gray,byte> segmentedImage = scs.GetSkinRegion();
-
-		Texture2D tex = returnAsTexture(segmentedImage);
-		rawImage.texture = tex;
-		rawImage.material.mainTexture = tex;
-		*/
 	}
 
 	// Update is called once per frame
@@ -58,11 +48,13 @@ public class LiveSCS : MonoBehaviour {
 		return bytes;
 	}
 
-	public Texture2D returnAsTexture (Image<Gray, byte> imgInput) {
+	public Texture2D ReturnAsTexture (Image<Gray, byte> imgInput) {
 		Texture2D img = new Texture2D(imgInput.Width, imgInput.Height);
 		for (int y = 0; y < img.height; y++) {
 			for (int x = 0; x < img.width; x++) {
-				UnityEngine.Color color = new UnityEngine.Color((float)imgInput[y, x].Intensity / 256, (float)imgInput[y, x].Intensity / 256, (float)imgInput[y, x].Intensity / 256);
+				UnityEngine.Color color = new UnityEngine.Color((float)imgInput[y, x].Intensity / 256, 
+																(float)imgInput[y, x].Intensity / 256, 
+																(float)imgInput[y, x].Intensity / 256);
 				img.SetPixel(x, y, color);
 			}
 		}
@@ -92,6 +84,10 @@ public class LiveSCS : MonoBehaviour {
 			ed.DetectEdges();
 			
 			GetComponent<RectTransform>().Rotate(new Vector3(0, 180, 180));
+
+			BlobDetection blobDetector = new BlobDetection(ed.detectedEdges);
+
+			blobDetector.DetectBlobs();
 
 			Texture2D tex = ed.ReturnAsTexture();
 			rawImage.texture = tex;

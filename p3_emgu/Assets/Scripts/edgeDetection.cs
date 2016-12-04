@@ -31,8 +31,8 @@ public class EdgeDetection {
 		
 		//detectedEdges = detectedEdges.MorphologyEx(MorphOp.Close, element, new System.Drawing.Point(-1, -1), 3, BorderType.Default, scalar);
 
-		detectedEdges = detectedEdges.Dilate(5);
-		detectedEdges = detectedEdges.Erode(3);
+		//detectedEdges = detectedEdges.Dilate(5);
+		//detectedEdges = detectedEdges.Erode(3);
 	}
 
 	public float getHeight() {

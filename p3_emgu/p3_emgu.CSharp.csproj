@@ -12,23 +12,12 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-<<<<<<< HEAD
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.2f2</UnityVersion>
     <RootNamespace></RootNamespace>
-=======
-    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
-    <UnityProjectType>Game:1</UnityProjectType>
-    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
-    <UnityVersion>5.4.2f2</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
->>>>>>> BLOB
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -90,52 +79,41 @@
     <Reference Include="ZedGraph">
       <HintPath>Assets\Plugins\ZedGraph.dll</HintPath>
     </Reference>
-<<<<<<< HEAD
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Assets\Scripts\ImageAcquisition.cs" />
-    <Compile Include="Assets\Scripts\LiveSCS.cs" />
-    <Compile Include="Assets\Scripts\MP_Asset.cs" />
-    <Compile Include="Assets\Scripts\MoustachePlacement.cs" />
-    <Compile Include="Assets\Scripts\SCS_Asset.cs" />
-    <Compile Include="Assets\Scripts\SkinColorSegmentation.cs" />
-    <Compile Include="Assets\Scripts\Triangle.cs" />
-    <Compile Include="Assets\Scripts\applyImage.cs" />
-    <Compile Include="Assets\Scripts\edgeDetection.cs" />
-    <Compile Include="Assets\Scripts\takePhoto.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Plugins\Emgu.CV.World.xml" />
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
-</Project>
-=======
-    <Reference Include="AForge.Video.VFW">
-      <HintPath>Assets\Plugins\AForge\Release\AForge.Video.VFW.dll</HintPath>
+    <Reference Include="TeRK">
+      <HintPath>Assets\Plugins\AForge\Externals\TeRK\TeRK.dll</HintPath>
     </Reference>
-    <Reference Include="AForge.Genetic">
-      <HintPath>Assets\Plugins\AForge\Release\AForge.Genetic.dll</HintPath>
+    <Reference Include="AForge.Controls">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Controls.dll</HintPath>
     </Reference>
-    <Reference Include="AForge.Video.Ximea">
-      <HintPath>Assets\Plugins\AForge\Release\AForge.Video.Ximea.dll</HintPath>
+    <Reference Include="AForge">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.dll</HintPath>
     </Reference>
     <Reference Include="AForge.Fuzzy">
       <HintPath>Assets\Plugins\AForge\Release\AForge.Fuzzy.dll</HintPath>
     </Reference>
+    <Reference Include="AForge.Genetic">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Genetic.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Imaging">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Imaging.Formats">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Imaging.Formats.dll</HintPath>
+    </Reference>
     <Reference Include="AForge.Imaging.IPPrototyper">
       <HintPath>Assets\Plugins\AForge\Release\AForge.Imaging.IPPrototyper.dll</HintPath>
     </Reference>
-    <Reference Include="AForge.Robotics.Lego">
-      <HintPath>Assets\Plugins\AForge\Release\AForge.Robotics.Lego.dll</HintPath>
+    <Reference Include="AForge.MachineLearning">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.MachineLearning.dll</HintPath>
     </Reference>
-    <Reference Include="AForge.Vision">
-      <HintPath>Assets\Plugins\AForge\Release\AForge.Vision.dll</HintPath>
+    <Reference Include="AForge.Math">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Math.dll</HintPath>
     </Reference>
     <Reference Include="AForge.Neuro">
       <HintPath>Assets\Plugins\AForge\Release\AForge.Neuro.dll</HintPath>
     </Reference>
-    <Reference Include="AForge.Imaging">
-      <HintPath>Assets\Plugins\AForge\Release\AForge.Imaging.dll</HintPath>
+    <Reference Include="AForge.Robotics.Lego">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Robotics.Lego.dll</HintPath>
     </Reference>
     <Reference Include="AForge.Robotics.Surveyor">
       <HintPath>Assets\Plugins\AForge\Release\AForge.Robotics.Surveyor.dll</HintPath>
@@ -143,39 +121,40 @@
     <Reference Include="AForge.Robotics.TeRK">
       <HintPath>Assets\Plugins\AForge\Release\AForge.Robotics.TeRK.dll</HintPath>
     </Reference>
-    <Reference Include="AForge.Imaging.Formats">
-      <HintPath>Assets\Plugins\AForge\Release\AForge.Imaging.Formats.dll</HintPath>
-    </Reference>
-    <Reference Include="AForge">
-      <HintPath>Assets\Plugins\AForge\Release\AForge.dll</HintPath>
-    </Reference>
-    <Reference Include="AForge.MachineLearning">
-      <HintPath>Assets\Plugins\AForge\Release\AForge.MachineLearning.dll</HintPath>
-    </Reference>
-    <Reference Include="AForge.Video.Kinect">
-      <HintPath>Assets\Plugins\AForge\Release\AForge.Video.Kinect.dll</HintPath>
+    <Reference Include="AForge.Video.DirectShow">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Video.DirectShow.dll</HintPath>
     </Reference>
     <Reference Include="AForge.Video">
       <HintPath>Assets\Plugins\AForge\Release\AForge.Video.dll</HintPath>
     </Reference>
-    <Reference Include="TeRK">
-      <HintPath>Assets\Plugins\AForge\Externals\TeRK\TeRK.dll</HintPath>
+    <Reference Include="AForge.Video.Kinect">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Video.Kinect.dll</HintPath>
     </Reference>
-    <Reference Include="AForge.Math">
-      <HintPath>Assets\Plugins\AForge\Release\AForge.Math.dll</HintPath>
+    <Reference Include="AForge.Video.VFW">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Video.VFW.dll</HintPath>
     </Reference>
-    <Reference Include="AForge.Video.DirectShow">
-      <HintPath>Assets\Plugins\AForge\Release\AForge.Video.DirectShow.dll</HintPath>
+    <Reference Include="AForge.Video.Ximea">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Video.Ximea.dll</HintPath>
     </Reference>
-    <Reference Include="AForge.Controls">
-      <HintPath>Assets\Plugins\AForge\Release\AForge.Controls.dll</HintPath>
+    <Reference Include="AForge.Vision">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Vision.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\IOHandler.cs" />
+    <Compile Include="Assets\Scripts\ImageAcquisition.cs" />
+    <Compile Include="Assets\Scripts\LiveSCS.cs" />
+    <Compile Include="Assets\Scripts\MP_Asset.cs" />
+    <Compile Include="Assets\Scripts\MoustachePlacement.cs" />
+    <Compile Include="Assets\Scripts\SCS_Asset.cs" />
+    <Compile Include="Assets\Scripts\SkinColorSegmentation.cs" />
+    <Compile Include="Assets\Scripts\Triangle.cs" />
     <Compile Include="Assets\Scripts\aforge_blob.cs" />
+    <Compile Include="Assets\Scripts\applyImage.cs" />
     <Compile Include="Assets\Scripts\blobdetection.cs" />
     <Compile Include="Assets\Scripts\blobextraction.cs" />
-    <Compile Include="Assets\Scripts\IOHandler.cs" />
+    <Compile Include="Assets\Scripts\edgeDetection.cs" />
+    <Compile Include="Assets\Scripts\takePhoto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\AForge\Externals\GhostAPI\AForge ReadMe.txt" />
@@ -230,4 +209,3 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
->>>>>>> BLOB

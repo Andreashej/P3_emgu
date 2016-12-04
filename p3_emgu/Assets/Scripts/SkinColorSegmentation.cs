@@ -21,10 +21,8 @@ namespace Assets.Scripts
         }
 
 		public SkinColorSegmentation(byte[] byteImg) {
-			//CvInvoke.Imdecode(byteImg, LoadImageType.Color, source);
 			MemoryStream ms = new MemoryStream(byteImg);
 			Bitmap bmp = new Bitmap(ms);
-			bmp.Save("Assets/Resources/test1.jpg");
 			Image<Bgr, byte> img = new Image<Bgr, byte>(bmp);
 			source = img.Mat;
 			
@@ -101,7 +99,7 @@ namespace Assets.Scripts
                     }
                     else
                     {
-                        resultImage[i, j] = new Gray(0);
+                        //resultImage[i, j] = new Gray(0);
                     }
                 }
             }
