@@ -45,7 +45,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
      <Compile Include="Assets\Scripts\takePhoto.cs" />
+=======
+     <Compile Include="Assets\Scripts\blobextraction.cs" />
+     <None Include="Assets\Plugins\Emgu.CV.World.xml" />
+>>>>>>> BLOB
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>

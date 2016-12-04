@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: cebb6ac2342a50e4c8c070b0ca3f7b4e
 timeCreated: 1479324850
+=======
+guid: 0a0f3e73b14584a8fa174deb286b5e0b
+timeCreated: 1479465271
+>>>>>>> BLOB
 licenseType: Free
 TextScriptImporter:
   userData: 

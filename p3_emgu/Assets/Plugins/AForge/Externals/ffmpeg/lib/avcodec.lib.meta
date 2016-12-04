@@ -1,11 +1,16 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: fdfb6827269ff7e47b722aed14347ca3
 timeCreated: 1480410847
 =======
 guid: 36a3d39772b72cb4fa95a79af72f7e20
 timeCreated: 1480337979
 >>>>>>> edge_detection
+=======
+guid: cb73d8ee8fef9d84dbd5e90b2ef33745
+timeCreated: 1480326402
+>>>>>>> BLOB
 licenseType: Free
 DefaultImporter:
   userData: 

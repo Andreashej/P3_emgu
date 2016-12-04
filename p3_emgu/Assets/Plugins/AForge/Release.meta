@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 29c613992cada544598980590d18a7f7
 folderAsset: yes
 timeCreated: 1480410846
@@ -8,6 +9,11 @@ guid: 26d9f698df7415848ac89dbe46d674fe
 folderAsset: yes
 timeCreated: 1480337979
 >>>>>>> edge_detection
+=======
+guid: f50d3b303b743f647b12e46e243b22f4
+folderAsset: yes
+timeCreated: 1480326401
+>>>>>>> BLOB
 licenseType: Free
 DefaultImporter:
   userData: 

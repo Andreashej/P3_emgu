@@ -12,12 +12,23 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+<<<<<<< HEAD
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.2f2</UnityVersion>
     <RootNamespace></RootNamespace>
+=======
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityVersion>5.4.2f2</UnityVersion>
+    <RootNamespace>
+    </RootNamespace>
+>>>>>>> BLOB
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -79,6 +90,7 @@
     <Reference Include="ZedGraph">
       <HintPath>Assets\Plugins\ZedGraph.dll</HintPath>
     </Reference>
+<<<<<<< HEAD
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ImageAcquisition.cs" />
@@ -97,3 +109,125 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
+=======
+    <Reference Include="AForge.Video.VFW">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Video.VFW.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Genetic">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Genetic.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.Ximea">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Video.Ximea.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Fuzzy">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Fuzzy.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Imaging.IPPrototyper">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Imaging.IPPrototyper.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Robotics.Lego">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Robotics.Lego.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Vision">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Vision.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Neuro">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Neuro.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Imaging">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Robotics.Surveyor">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Robotics.Surveyor.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Robotics.TeRK">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Robotics.TeRK.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Imaging.Formats">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Imaging.Formats.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.MachineLearning">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.MachineLearning.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.Kinect">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Video.Kinect.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="TeRK">
+      <HintPath>Assets\Plugins\AForge\Externals\TeRK\TeRK.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Math">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Controls">
+      <HintPath>Assets\Plugins\AForge\Release\AForge.Controls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Scripts\aforge_blob.cs" />
+    <Compile Include="Assets\Scripts\blobdetection.cs" />
+    <Compile Include="Assets\Scripts\blobextraction.cs" />
+    <Compile Include="Assets\Scripts\IOHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Plugins\AForge\Externals\GhostAPI\AForge ReadMe.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\GhostAPI\relnotes.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\TeRK\AForge ReadMe.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\AForge ReadMe.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\README.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\bzip2.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\ffmpeg.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\freetype.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\frei0r.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\gsm.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\lame.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\libvpx.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\opencore-amr.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\openjpeg.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\rtmp.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\schroedinger.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\sdl.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\speex.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\theora.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\vo-aacenc.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\vo-amrwbenc.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\vorbis.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\x264.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\xavs.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\xvid.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\ffmpeg\licenses\zlib.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\libfreenect\AForge ReadMe.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\msinttypes\AForge ReadMe.txt" />
+    <None Include="Assets\Plugins\AForge\Externals\msinttypes\changelog.txt" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.Controls.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.Fuzzy.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.Genetic.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.Imaging.Formats.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.Imaging.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.MachineLearning.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.Math.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.Neuro.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.Robotics.Lego.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.Robotics.Surveyor.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.Robotics.TeRK.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.Video.DirectShow.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.Video.FFMPEG.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.Video.Kinect.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.Video.VFW.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.Video.Ximea.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.Video.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.Vision.xml" />
+    <None Include="Assets\Plugins\AForge\Release\AForge.xml" />
+    <None Include="Assets\Plugins\Emgu.CV.World.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
+</Project>
+>>>>>>> BLOB

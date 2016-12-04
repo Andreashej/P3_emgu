@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/LiveSCS.unity
+=======
+- path: Assets/Scenes/blobextract.unity
+>>>>>>> BLOB
   isLoaded: 1
   isActive: 1
