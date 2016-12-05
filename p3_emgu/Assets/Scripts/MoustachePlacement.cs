@@ -16,16 +16,23 @@ namespace Assets.Scripts
         {
 
         }
-
+        
         public bool GetOrientation()
         {
-            return reference.GetEyeToBase() < workingImage.GetEyeToBase(); //if true, the rotation is positive (counterclockwise)
+            double[] referenceDistances = reference.GetEyeToBase();
+            double[] workingDistances = workingImage.GetEyeToBase();
+
+            if (referenceDistances[0] > workingDistances[0]) return false;
+            else return true;
+
         }
 
 
         public void SetYRotation()
         {
-
+            double refYRot = Math.Atan(reference.GetTangent());
+            double workYRot = Math.Atan(workingImage.GetTangent());
+            zRotation = workYRot - refYRot;
         }
 
         public void SetZRotation()

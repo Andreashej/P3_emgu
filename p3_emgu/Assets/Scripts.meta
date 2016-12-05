@@ -1,6 +1,7 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 0db9ce574a8734c39bd602e5bbd296aa
 folderAsset: yes
 timeCreated: 1479296225
@@ -14,6 +15,11 @@ guid: 305bcc6bd51b6fe468d20d5f031f03d1
 folderAsset: yes
 timeCreated: 1479296079
 >>>>>>> edge_detection
+=======
+guid: 0fad38a023135464e93b6e2d6de94d81
+folderAsset: yes
+timeCreated: 1479719812
+>>>>>>> 17db60a7289540822d59d927eb2440839d123caa
 licenseType: Free
 DefaultImporter:
   userData: 
