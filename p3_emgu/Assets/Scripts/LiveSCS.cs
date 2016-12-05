@@ -63,6 +63,21 @@ public class LiveSCS : MonoBehaviour {
 		return img;
 	}
 
+	public Texture2D ReturnAsTexture (Image<Rgb, byte> imgInput) {
+		Texture2D img = new Texture2D(imgInput.Width, imgInput.Height);
+		for (int y = 0; y < img.height; y++) {
+			for (int x = 0; x < img.width; x++) {
+				UnityEngine.Color color = new UnityEngine.Color((float)imgInput[y, x].Blue / 256,
+																(float)imgInput[y, x].Green / 256,
+																(float)imgInput[y, x].Red / 256);
+				img.SetPixel(x, y, color);
+			}
+		}
+
+		img.Apply();
+		return img;
+	}
+
 	public void TakeHiResShot () {
 		takeHiResShot = true;
 	}
@@ -71,7 +86,8 @@ public class LiveSCS : MonoBehaviour {
 		takeHiResShot |= Input.GetKeyDown("k");
 		if (takeHiResShot) {
 
-			byte[] bytes = ReturnTextureAsBytes(webcamTexture);
+			//byte[] bytes = ReturnTextureAsBytes(webcamTexture);
+			Mat bytes = new Mat("Assets/Resources/skorf.jpg", LoadImageType.Color);
 
 			SkinColorSegmentation scs = new SkinColorSegmentation(bytes);
 
@@ -82,18 +98,31 @@ public class LiveSCS : MonoBehaviour {
 			EdgeDetection ed = new EdgeDetection(segmentedImage);
 
 			ed.DetectEdges();
-			
-			GetComponent<RectTransform>().Rotate(new Vector3(0, 180, 180));
 
 			BlobDetection blobDetector = new BlobDetection(ed.detectedEdges);
 
 			blobDetector.DetectBlobs();
 
-			Texture2D tex = ed.ReturnAsTexture();
+			Image<Rgb, byte> outputImage = bytes.ToImage<Rgb, byte>(); ;
+
+			foreach (Point center in blobDetector.returnBlobCentres()) {
+
+				for(int i = 0; i < 5; i++) {
+					for (int j = 0; j < 5; j++) {
+						outputImage[i+center.Y, j+center.X] = new Rgb(255, 0, 0);
+					}
+				}
+			}
+
+			GetComponent<RectTransform>().Rotate(new Vector3(0, 0, 180));
+			GetComponent<RectTransform>().sizeDelta = new Vector2(outputImage.Width, outputImage.Height);
+			Texture2D tex = ReturnAsTexture(outputImage);
 			rawImage.texture = tex;
 			rawImage.material.mainTexture = tex;
 
 			takeHiResShot = false;
 		}
+
 	}
+
 }

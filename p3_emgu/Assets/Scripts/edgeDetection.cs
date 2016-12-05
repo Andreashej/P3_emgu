@@ -18,18 +18,14 @@ public class EdgeDetection {
 	public void DetectEdges () {
 		//Gaussianblur
 		detectedEdges = srcImg.SmoothGaussian(15);
-		//detectedEdges = srcImg.SmoothMedian(7);
-
 		
-
 		//Detect Edges
 		detectedEdges = detectedEdges.Canny(10, 230);
-		//detectedEdges = detectedEdges.Sobel(1, 0, 3);
-
-		Mat element = CvInvoke.GetStructuringElement(ElementShape.Cross, new System.Drawing.Size(5,5), new System.Drawing.Point(-1,-1));
+		
+		Mat element = CvInvoke.GetStructuringElement(ElementShape.Cross, new System.Drawing.Size(3,3), new System.Drawing.Point(-1,-1));
 		MCvScalar scalar = new MCvScalar(20);
 		
-		//detectedEdges = detectedEdges.MorphologyEx(MorphOp.Close, element, new System.Drawing.Point(-1, -1), 3, BorderType.Default, scalar);
+		detectedEdges = detectedEdges.MorphologyEx(MorphOp.Close, element, new System.Drawing.Point(-1, -1), 5, BorderType.Default, scalar);
 
 		//detectedEdges = detectedEdges.Dilate(5);
 		//detectedEdges = detectedEdges.Erode(3);

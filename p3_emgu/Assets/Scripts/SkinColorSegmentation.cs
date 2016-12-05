@@ -95,14 +95,17 @@ namespace Assets.Scripts
 
                     if ( !(rgb && yCbCr && hsv))
                     {
-                        resultImage[i, j] = new Gray(255);
+                        resultImage[i, j] = new Gray(0);
                     }
                     else
                     {
-                        //resultImage[i, j] = new Gray(0);
+						resultImage[i, j] = new Gray(255);
                     }
                 }
             }
+			resultImage = resultImage.Dilate(5);
+			resultImage = resultImage.Erode(3);
+			
 
             return resultImage;
         } 
