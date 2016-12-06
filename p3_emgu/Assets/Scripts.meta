@@ -16,6 +16,7 @@ folderAsset: yes
 timeCreated: 1479296079
 >>>>>>> edge_detection
 =======
+<<<<<<< HEAD
 guid: d69042b801d204604ad9ff251b29c012
 folderAsset: yes
 timeCreated: 1479297510
@@ -25,6 +26,12 @@ folderAsset: yes
 timeCreated: 1479297703
 >>>>>>> e6199d779f372a964fc1bdd26cafeaa200e3d1f3
 >>>>>>> BLOB
+=======
+guid: 0fad38a023135464e93b6e2d6de94d81
+folderAsset: yes
+timeCreated: 1479719812
+>>>>>>> 17db60a7289540822d59d927eb2440839d123caa
+>>>>>>> origin/Orientation
 licenseType: Free
 DefaultImporter:
   userData: 
