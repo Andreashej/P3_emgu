@@ -19,6 +19,7 @@ public class LiveSCS : MonoBehaviour {
 	public int resWidth = 1600;
 	public int resHeight = 900;
 	public bool takeHiResShot = false;
+	public static MoustachePlacement place;
 
 	// Use this for initialization
 	void Start () {
@@ -103,9 +104,9 @@ public class LiveSCS : MonoBehaviour {
 
 			blobDetector.DetectBlobs();
 
-			Image<Rgb, byte> outputImage = bytes.ToImage<Rgb, byte>(); ;
+			Image<Rgb, byte> outputImage = bytes.ToImage<Rgb, byte>();
 
-			MoustachePlacement place = new MoustachePlacement(blobDetector.returnBlobCentres(), blobDetector.returnBlobCentres());
+			place = new MoustachePlacement(blobDetector.returnBlobCentres(), blobDetector.returnBlobCentres());
 			place.SetMoustacheLocation();
 			place.SetYRotation();
 			place.SetZRotation();

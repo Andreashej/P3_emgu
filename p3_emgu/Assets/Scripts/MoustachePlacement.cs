@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace Assets.Scripts
 {
-    class MoustachePlacement
+    public class MoustachePlacement
     {
         Triangle reference, workingImage;
         double zRotation, xRotation; //it's in radians
@@ -53,7 +53,7 @@ namespace Assets.Scripts
 			Point mouth = workingImage.GetMouth();
 			Point heightBase = workingImage.GetHeightBase();
 			Point dirVector = new Point(heightBase.X-mouth.X, heightBase.Y-mouth.Y);
-			moustacheLocation = new Point(mouth.X + (dirVector.X / 3), mouth.Y + (dirVector.Y / 3));
+			moustacheLocation = new Point(mouth.X + (dirVector.X / 4)*3, mouth.Y + (dirVector.Y / 4)*3);
 		}
 
 		public double GetXRotation() {
