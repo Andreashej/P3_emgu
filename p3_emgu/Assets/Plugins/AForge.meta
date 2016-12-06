@@ -1,6 +1,7 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 03f3e66b53a128c458bf543d170563f7
 folderAsset: yes
 timeCreated: 1480410846
@@ -14,6 +15,11 @@ guid: 1f854d095249e3347978a9c5608892ee
 folderAsset: yes
 timeCreated: 1480326401
 >>>>>>> BLOB
+=======
+guid: d10c4b04cd05c82498ee635066880373
+folderAsset: yes
+timeCreated: 1480679020
+>>>>>>> origin/User_Interface
 licenseType: Free
 DefaultImporter:
   userData: 
