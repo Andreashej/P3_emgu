@@ -12,9 +12,11 @@ namespace Assets.Scripts
         Point leftEye, rightEye, mouth;
         double area;
         
-        public Triangle()
+        public Triangle(List<Point> blobs)
         {
-
+			leftEye = blobs[0];
+			rightEye = blobs[1];
+			mouth = blobs[2];
         }
         
         public double PointDistance(Point a, Point b)
@@ -82,5 +84,9 @@ namespace Assets.Scripts
         {
             return ((rightEye.Y - leftEye.Y) / (rightEye.X - leftEye.X));
         }
+
+		public Point GetMouth () {
+			return mouth;
+		}
     }
 }

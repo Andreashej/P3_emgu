@@ -105,6 +105,13 @@ public class LiveSCS : MonoBehaviour {
 
 			Image<Rgb, byte> outputImage = bytes.ToImage<Rgb, byte>(); ;
 
+			MoustachePlacement place = new MoustachePlacement(blobDetector.returnBlobCentres(), blobDetector.returnBlobCentres());
+			place.SetMoustacheLocation();
+			place.SetYRotation();
+			place.SetZRotation();
+
+			Debug.Log("Position: " + place.GetLocation() + " zRotation: " + place.GetZRotation() + " xRotation: " + place.GetXRotation());
+
 			foreach (Point center in blobDetector.returnBlobCentres()) {
 
 				for (int i = 0; i < 5; i++) {
@@ -114,7 +121,7 @@ public class LiveSCS : MonoBehaviour {
 				}
 			}
 
-			segmentedImage.Save("Assets/Resources/test.jpg");
+			
 			
 			GetComponent<RectTransform>().Rotate(new Vector3(0, 0, 180));
 			GetComponent<RectTransform>().sizeDelta = new Vector2(outputImage.Width, outputImage.Height);
