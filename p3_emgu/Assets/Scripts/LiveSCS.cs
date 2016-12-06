@@ -87,7 +87,7 @@ public class LiveSCS : MonoBehaviour {
 		if (takeHiResShot) {
 
 			//byte[] bytes = ReturnTextureAsBytes(webcamTexture);
-			Mat bytes = new Mat("Assets/Resources/skorf.jpg", LoadImageType.Color);
+			Mat bytes = new Mat("Assets/Resources/ivan.jpg", LoadImageType.Color);
 
 			SkinColorSegmentation scs = new SkinColorSegmentation(bytes);
 
@@ -107,13 +107,15 @@ public class LiveSCS : MonoBehaviour {
 
 			foreach (Point center in blobDetector.returnBlobCentres()) {
 
-				for(int i = 0; i < 5; i++) {
+				for (int i = 0; i < 5; i++) {
 					for (int j = 0; j < 5; j++) {
-						outputImage[i+center.Y, j+center.X] = new Rgb(255, 0, 0);
+						outputImage[center.Y - i, center.X - j] = new Rgb(255, 0, 0);
 					}
 				}
 			}
 
+			segmentedImage.Save("Assets/Resources/test.jpg");
+			
 			GetComponent<RectTransform>().Rotate(new Vector3(0, 0, 180));
 			GetComponent<RectTransform>().sizeDelta = new Vector2(outputImage.Width, outputImage.Height);
 			Texture2D tex = ReturnAsTexture(outputImage);

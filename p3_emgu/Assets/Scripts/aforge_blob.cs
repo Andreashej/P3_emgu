@@ -34,10 +34,10 @@ namespace Assets.Scripts {
 		// set filtering options
 		blobCounter.FilterBlobs = true;
 	
-		blobCounter.MinWidth = 5;
-		blobCounter.MinHeight = 5;
-		blobCounter.MaxHeight = 200;
-		blobCounter.MaxWidth = 400;
+		blobCounter.MinWidth = 20;
+		blobCounter.MinHeight = 10;
+		blobCounter.MaxHeight = 100;
+		blobCounter.MaxWidth = 220;
 		
 
 			blobCounter.ProcessImage(image);
@@ -54,8 +54,9 @@ namespace Assets.Scripts {
 
 				float blobRatio = (float)blob.Rectangle.Width / (float)blob.Rectangle.Height;
 
-				bool mouthRatio = ((float)2.8 < blobRatio && (float)4.5 > blobRatio);
-				bool eyeRatio = ((float)1.5 < blobRatio && (float) 3 > blobRatio);
+				bool mouthRatio = ((float)3 < blobRatio && (float)8 > blobRatio);
+				bool eyeRatio = ((float)1.2 < blobRatio && (float) 3.5 > blobRatio);
+				
 
 				if (mouthRatio || eyeRatio) {
 					List<IntPoint> leftPoints, rightPoints, edgePoints = new List<IntPoint>();

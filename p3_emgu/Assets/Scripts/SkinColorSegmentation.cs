@@ -103,8 +103,8 @@ namespace Assets.Scripts
                     }
                 }
             }
-			resultImage = resultImage.Dilate(5);
-			resultImage = resultImage.Erode(3);
+			//resultImage = resultImage.Dilate(3);
+			//resultImage = resultImage.Erode(5);
 			
 
             return resultImage;

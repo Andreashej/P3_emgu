@@ -25,7 +25,7 @@ public class EdgeDetection {
 		Mat element = CvInvoke.GetStructuringElement(ElementShape.Cross, new System.Drawing.Size(3,3), new System.Drawing.Point(-1,-1));
 		MCvScalar scalar = new MCvScalar(20);
 		
-		detectedEdges = detectedEdges.MorphologyEx(MorphOp.Close, element, new System.Drawing.Point(-1, -1), 5, BorderType.Default, scalar);
+		detectedEdges = detectedEdges.MorphologyEx(MorphOp.Close, element, new System.Drawing.Point(-1, -1), 15, BorderType.Default, scalar);
 
 		//detectedEdges = detectedEdges.Dilate(5);
 		//detectedEdges = detectedEdges.Erode(3);
