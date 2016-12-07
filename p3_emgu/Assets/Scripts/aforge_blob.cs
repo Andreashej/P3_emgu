@@ -11,7 +11,7 @@ using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
 
 namespace Assets.Scripts {
-	class BlobDetection {
+	public class BlobDetection {
 		Bitmap image;
 		Texture2D tex;
 		Blob[] blobs;
@@ -20,6 +20,8 @@ namespace Assets.Scripts {
 		List<System.Drawing.Point> blobCentres = new List<System.Drawing.Point>();
 
 		BlobCounter blobCounter = new BlobCounter();
+
+		public BlobDetection () { }
 
 		public BlobDetection(Image<Gray, byte> inputImg) {
 			image = inputImg.ToBitmap();
@@ -54,9 +56,8 @@ namespace Assets.Scripts {
 
 				float blobRatio = (float)blob.Rectangle.Width / (float)blob.Rectangle.Height;
 
-				bool mouthRatio = ((float)3 < blobRatio && (float)8 > blobRatio);
-				bool eyeRatio = ((float)1.2 < blobRatio && (float) 3.5 > blobRatio);
-				
+				bool mouthRatio = ((float)3.5 < blobRatio && (float)8 > blobRatio);
+				bool eyeRatio = ((float)1.2 < blobRatio && (float) 3.5 >= blobRatio);
 
 				if (mouthRatio || eyeRatio) {
 					List<IntPoint> leftPoints, rightPoints, edgePoints = new List<IntPoint>();
@@ -84,7 +85,7 @@ namespace Assets.Scripts {
 					avgX /= edgePoints.Count;
 					avgY /= edgePoints.Count;
 
-					Debug.Log("X: " + avgX + ", Y: " + avgY + ", Ratio: " + blobRatio);
+					//Debug.Log("X: " + avgX + ", Y: " + avgY + ", Ratio: " + blobRatio);
 					blobCenter = new System.Drawing.Point(avgX, avgY);
 
 					blobCentres.Add(blobCenter);
@@ -95,6 +96,9 @@ namespace Assets.Scripts {
 			}
 			//Unlock databits
 			image.UnlockBits(data);
+
+			//image.Save("Assets/Resouces/test.jpg",ImageFormat.Jpeg);
+
 		
 		}
 		

@@ -13,17 +13,18 @@ public class UIscript : MonoBehaviour {
     public float UIWidth;
     public float UIHeight;
 
-    bool UIActive = false;
+    public bool UIActive = false;
 
-    public void displayUI() {
-        UIActive = !UIActive;
-        UIWidth = getCanvasSize.canvasWidth;
-        UIHeight = getCanvasSize.canvasHeight;
-        //Debug.Log(UIWidth);
-    }
+    public void displayUI() {	
+		UIActive = true;
+		UIWidth = getCanvasSize.canvasWidth / 2;
+		UIHeight = getCanvasSize.canvasHeight / 2;
+		//Debug.Log(UIWidth);
+	}
 
     public void canvasClick() {
         UIActive = false;
+		Destroy(moustache_active);
     }
 
     public void instantiateMoustache() {
@@ -41,7 +42,7 @@ public class UIscript : MonoBehaviour {
     void Update() {
         if (UIActive) {
             panel = GameObject.Find("UIPanel");
-            if (panel.transform.localPosition.x > UIWidth - 860) {
+            if (panel.transform.localPosition.x > UIWidth - 60) {
                 Vector3 transitionTemp = new Vector3(20.0f, 0, 0);
                 panel.transform.localPosition -= transitionTemp;
 			}
@@ -49,7 +50,7 @@ public class UIscript : MonoBehaviour {
         }
         else {
             panel = GameObject.Find("UIPanel");
-            if (panel.transform.localPosition.x < UIWidth - 740) {
+            if (panel.transform.localPosition.x < UIWidth + 60) {
                 Vector3 transitionTemp = new Vector3(20.0f, 0, 0);
                 panel.transform.localPosition += transitionTemp;
 			}
