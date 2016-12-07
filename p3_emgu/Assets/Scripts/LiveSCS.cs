@@ -88,7 +88,7 @@ public class LiveSCS : MonoBehaviour {
 		if (takeHiResShot) {
 
 			//byte[] bytes = ReturnTextureAsBytes(webcamTexture);
-			Mat bytes = new Mat("Assets/Resources/ivan.jpg", LoadImageType.Color);
+			Mat bytes = new Mat("Assets/Resources/TestImages/andreas.jpg", LoadImageType.Color);
 
 			SkinColorSegmentation scs = new SkinColorSegmentation(bytes);
 
