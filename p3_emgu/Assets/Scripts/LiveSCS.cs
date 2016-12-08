@@ -1,27 +1,21 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
-using Assets.Scripts;
+﻿using Assets.Scripts;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.CV.CvEnum;
-using Emgu.Util;
+using System;
 using System.Drawing;
 using System.IO;
-using System.Text;
-using System;
-using System.Linq;
-using System.Runtime.InteropServices;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class LiveSCS : MonoBehaviour {
 	WebCamTexture webcamTexture;
 	public RawImage rawImage;
-	public int resWidth = 1280;
-	public int resHeight = 720;
-	public bool takeHiResShot = false;
+	public int resWidth, resHeight;
 	public static MoustachePlacement place;
-	public int firstPress = 0;
 	bool webcamActive = true;
+	int firstPress = 0;
+	
 	BlobDetection referencePicture = new BlobDetection();
 	BlobDetection activePicture = new BlobDetection();
 
@@ -81,33 +75,16 @@ public class LiveSCS : MonoBehaviour {
 		return img;
 	}
 
-	public void TakeHiResShot () {
-		takeHiResShot = true;
-	}
-
-	void LateUpdate () {
-		takeHiResShot |= Input.GetKeyDown("k");
-		if (takeHiResShot) {
-
-			takePhoto();
-
-			takeHiResShot = false;
-		}
-
-	}
-
 	public void takePhoto() {
-		//Debug.Log("Webcam Dimensions: " + webcamTexture.width + ", " + webcamTexture.height);
 		byte[] bytes = ReturnTextureAsBytes(webcamTexture);
-		//Mat bytes = new Mat("Assets/Resources/ivan.jpg", LoadImageType.Color);
+		//Mat bytes = new Mat("Assets/Resources/TestImages/torben.jpg", LoadImageType.Color);
 
 		Image<Rgb, byte> outputImage;
 
 		if (firstPress == 0) {
-			referencePicture = TakeReferencePicture(bytes);
-			//Debug.Log("firstPress: " + firstPress);
-			MemoryStream ms = new MemoryStream(bytes);
-			Bitmap bmp = new Bitmap(ms);
+			referencePicture = TakePicture(bytes);
+			MemoryStream memoryStream = new MemoryStream(bytes);
+			Bitmap bmp = new Bitmap(memoryStream);
 			outputImage = new Image<Rgb, byte>(bmp);
 
 			foreach (Point center in referencePicture.returnBlobCentres()) {
@@ -121,9 +98,9 @@ public class LiveSCS : MonoBehaviour {
 			}
 			Debug.Log(referencePicture.returnBlobCentres().Count);
 		} else {
-			activePicture = TakeReferencePicture(bytes);
-			MemoryStream ms = new MemoryStream(bytes);
-			Bitmap bmp = new Bitmap(ms);
+			activePicture = TakePicture(bytes);
+			MemoryStream memoryStream = new MemoryStream(bytes);
+			Bitmap bmp = new Bitmap(memoryStream);
 			outputImage = new Image<Rgb, byte>(bmp);
 			Debug.Log(activePicture.returnBlobCentres().Count);
 
@@ -170,7 +147,7 @@ public class LiveSCS : MonoBehaviour {
 		webcamActive = true;
 	}
 
-	public BlobDetection TakeReferencePicture(byte[] bytes) {
+	public BlobDetection TakePicture(byte[] bytes) {
 		SkinColorSegmentation scs = new SkinColorSegmentation(bytes);
 
 		Image<Gray,byte> segmentedImage = scs.GetSkinRegion();

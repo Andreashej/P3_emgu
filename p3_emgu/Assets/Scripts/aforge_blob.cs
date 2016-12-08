@@ -104,6 +104,16 @@ namespace Assets.Scripts {
 		
 		public List<System.Drawing.Point> returnBlobCentres() {
 			return blobCentres;
+			/*
+			List<System.Drawing.Point> testBlobs = new List<System.Drawing.Point>();
+			System.Drawing.Point eye1 = new System.Drawing.Point(540,300);
+			System.Drawing.Point eye2 = new System.Drawing.Point(740,300);
+			System.Drawing.Point mouth = new System.Drawing.Point(640,500);
+			testBlobs.Add(eye1);
+			testBlobs.Add(eye2);
+			testBlobs.Add(mouth);
+
+			return testBlobs;*/
 		}
 	}
 }

@@ -53,10 +53,12 @@ namespace Assets.Scripts
 		{
 			Point mouth = workingImage.GetMouth();
 			Point[] eyes = workingImage.GetEyes();
-			Point eyeMiddle = new Point((eyes[0].X+eyes[1].X)/2, (eyes[0].Y+eyes[1].Y)/2);
-			Point dirVector = new Point(eyeMiddle.X-mouth.X, eyeMiddle.Y-mouth.Y);
-			moustacheLocation = new Point(1280-mouth.X, (dirVector.Y + (mouth.Y / 4)));
-			Debug.Log(moustacheLocation);
+			Point eyeMiddle = new Point(((eyes[1].X-eyes[0].X)/2)+eyes[0].X, ((eyes[1].Y-eyes[0].Y)/2)+eyes[0].Y);
+			Point dirVector = new Point(eyeMiddle.X-(640-mouth.X), eyeMiddle.Y-((360-mouth.Y)/4)*3);
+			moustacheLocation = new Point(dirVector.X, dirVector.Y);
+			Debug.Log(dirVector.X + " - " + dirVector.Y);
+			Debug.Log(eyes[1].X + " " + eyes[0].X);
+			Debug.Log(eyeMiddle.X);
 			
 		}
 
