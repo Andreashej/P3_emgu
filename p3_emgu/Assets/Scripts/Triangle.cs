@@ -15,9 +15,10 @@ namespace Assets.Scripts
         
         public Triangle(List<Point> blobs)
         {
-			leftEye = blobs[0];
-			rightEye = blobs[1];
+			leftEye = blobs[1];
+			rightEye = blobs[0];
 			mouth = blobs[2];
+			SetAreaHeron();
         }
         
         public double PointDistance(Point a, Point b)
@@ -83,7 +84,10 @@ namespace Assets.Scripts
 
         public double GetTangent()
         {
-            return ((rightEye.Y - leftEye.Y) / (rightEye.X - leftEye.X));
+			double a = rightEye.Y - leftEye.Y;
+			double b = rightEye.X - leftEye.X;
+			return a / b;
+			
         }
 
 		public Point GetMouth () {

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Drawing;
 using UnityEngine;
 
@@ -30,36 +28,49 @@ namespace Assets.Scripts
         }
 
 
-        public void SetYRotation()
+        public void SetXRotation()
         {
             double refYRot = Math.Atan(reference.GetTangent());
             double workYRot = Math.Atan(workingImage.GetTangent());
-            zRotation = workYRot - refYRot;
+            xRotation = RadToDeg(workYRot - refYRot);
         }
+
+		public void SetXRotationNoReference () {
+			double workYRot = Math.Atan(workingImage.GetTangent());
+			xRotation = RadToDeg(workYRot);
+		}
 
         public void SetZRotation()
         {
-            if (GetOrientation())
+			double a = workingImage.GetArea();
+			double b = reference.GetArea();
+			double rot = Math.Acos(a/b);
+
+			if (GetOrientation())
             {
-                zRotation = Math.Acos(workingImage.GetArea() / reference.GetArea()); // if it doesn't work, change workingImage with reference
+
+				zRotation = RadToDeg(rot); // if it doesn't work, change workingImage with reference
             }
             else
             {
-                zRotation = Math.Acos(workingImage.GetArea() / reference.GetArea())*(-1);
+                zRotation = RadToDeg(rot*(-1));
             }
+			Debug.Log(zRotation);
         }
 
 		public void SetMoustacheLocation() 
 		{
 			Point mouth = workingImage.GetMouth();
 			Point[] eyes = workingImage.GetEyes();
-			Point eyeMiddle = new Point(((eyes[1].X-eyes[0].X)/2)+eyes[0].X, ((eyes[1].Y-eyes[0].Y)/2)+eyes[0].Y);
-			Point dirVector = new Point(eyeMiddle.X-(640-mouth.X), eyeMiddle.Y-((360-mouth.Y)/4)*3);
-			moustacheLocation = new Point(dirVector.X, dirVector.Y);
-			Debug.Log(dirVector.X + " - " + dirVector.Y);
-			Debug.Log(eyes[1].X + " " + eyes[0].X);
-			Debug.Log(eyeMiddle.X);
+			Point eyeMiddle = new Point((eyes[0].X+eyes[1].X)/2,(eyes[0].Y+eyes[1].Y)/2);
+			Point dirVector = new Point(eyeMiddle.X-mouth.X, eyeMiddle.Y-mouth.Y);
+			moustacheLocation = new Point(1280-(mouth.X+dirVector.X/4), 720-(mouth.Y+dirVector.Y/4));
 			
+		}
+
+
+		public double RadToDeg (double rad) {
+			return rad * 180 / Math.PI;
 		}
 
 		public double GetXRotation() {
@@ -73,5 +84,9 @@ namespace Assets.Scripts
 		public Point GetLocation() {
 			return moustacheLocation;
 		}
-    }
+
+		public Point GetEyeLocation () {
+			return new Point(1280-workingImage.GetEyes()[1].X, 720-workingImage.GetEyes()[1].Y);
+		}
+	}
 }
