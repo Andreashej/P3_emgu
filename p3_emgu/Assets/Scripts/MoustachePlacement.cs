@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -51,9 +52,12 @@ namespace Assets.Scripts
 		public void SetMoustacheLocation() 
 		{
 			Point mouth = workingImage.GetMouth();
-			Point heightBase = workingImage.GetHeightBase();
-			Point dirVector = new Point(heightBase.X-mouth.X, heightBase.Y-mouth.Y);
-			moustacheLocation = new Point(mouth.X + (dirVector.X / 4)*3, mouth.Y + (dirVector.Y / 4)*3);
+			Point[] eyes = workingImage.GetEyes();
+			Point eyeMiddle = new Point((eyes[0].X+eyes[1].X)/2, (eyes[0].Y+eyes[1].Y)/2);
+			Point dirVector = new Point(eyeMiddle.X-mouth.X, eyeMiddle.Y-mouth.Y);
+			moustacheLocation = new Point(1280-mouth.X, (dirVector.Y + (mouth.Y / 4)));
+			Debug.Log(moustacheLocation);
+			
 		}
 
 		public double GetXRotation() {

@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.2f2</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -141,22 +143,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\IOHandler.cs" />
-    <Compile Include="Assets\Scripts\ImageAcquisition.cs" />
     <Compile Include="Assets\Scripts\LiveSCS.cs" />
-    <Compile Include="Assets\Scripts\MP_Asset.cs" />
     <Compile Include="Assets\Scripts\MoustachePlacement.cs" />
-    <Compile Include="Assets\Scripts\SCS_Asset.cs" />
     <Compile Include="Assets\Scripts\SkinColorSegmentation.cs" />
     <Compile Include="Assets\Scripts\Triangle.cs" />
     <Compile Include="Assets\Scripts\UIscript.cs" />
     <Compile Include="Assets\Scripts\aforge_blob.cs" />
-    <Compile Include="Assets\Scripts\applyImage.cs" />
-    <Compile Include="Assets\Scripts\blobdetection.cs" />
-    <Compile Include="Assets\Scripts\blobextraction.cs" />
     <Compile Include="Assets\Scripts\edgeDetection.cs" />
     <Compile Include="Assets\Scripts\getCanvasSize.cs" />
-    <Compile Include="Assets\Scripts\takePhoto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\AForge\Externals\GhostAPI\AForge ReadMe.txt" />

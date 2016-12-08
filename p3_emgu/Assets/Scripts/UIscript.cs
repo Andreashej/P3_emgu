@@ -32,8 +32,8 @@ public class UIscript : MonoBehaviour {
             Destroy(moustache_active);
         }
 
-        moustache_active = Instantiate(moustache, new Vector3(LiveSCS.place.GetLocation().X, LiveSCS.place.GetLocation().Y, -20), Quaternion.identity);
-        polymesh = GetComponentsInChildren<Renderer>();
+		moustache_active = Instantiate(moustache, new Vector3(LiveSCS.place.GetLocation().X, LiveSCS.place.GetLocation().Y, -10), Quaternion.identity);
+		polymesh = GetComponentsInChildren<Renderer>();
         foreach (Renderer mesh in polymesh) {
             mesh.material = mat;
         }

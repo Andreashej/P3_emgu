@@ -89,5 +89,10 @@ namespace Assets.Scripts
 		public Point GetMouth () {
 			return mouth;
 		}
+
+		public Point[] GetEyes () {
+			Point[] eyes = { leftEye, rightEye};
+			return eyes;
+		}
     }
 }

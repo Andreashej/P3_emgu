@@ -22,6 +22,8 @@ public class LiveSCS : MonoBehaviour {
 	public static MoustachePlacement place;
 	public int firstPress = 0;
 	bool webcamActive = true;
+	BlobDetection referencePicture = new BlobDetection();
+	BlobDetection activePicture = new BlobDetection();
 
 	// Use this for initialization
 	void Start () {
@@ -98,8 +100,7 @@ public class LiveSCS : MonoBehaviour {
 		//Debug.Log("Webcam Dimensions: " + webcamTexture.width + ", " + webcamTexture.height);
 		byte[] bytes = ReturnTextureAsBytes(webcamTexture);
 		//Mat bytes = new Mat("Assets/Resources/ivan.jpg", LoadImageType.Color);
-		BlobDetection referencePicture = new BlobDetection();
-		BlobDetection activePicture = new BlobDetection();
+
 		Image<Rgb, byte> outputImage;
 
 		if (firstPress == 0) {
@@ -116,15 +117,17 @@ public class LiveSCS : MonoBehaviour {
 						outputImage[center.Y - i, center.X - j] = new Rgb(0, 0, 255);
 					}
 				}
+				
 			}
+			Debug.Log(referencePicture.returnBlobCentres().Count);
 		} else {
 			activePicture = TakeReferencePicture(bytes);
 			MemoryStream ms = new MemoryStream(bytes);
 			Bitmap bmp = new Bitmap(ms);
 			outputImage = new Image<Rgb, byte>(bmp);
+			Debug.Log(activePicture.returnBlobCentres().Count);
 
-
-			if (activePicture.returnBlobCentres().Count == 3) {
+			if (activePicture.returnBlobCentres().Count == 3 && referencePicture.returnBlobCentres().Count == 3) {
 				place = new MoustachePlacement(referencePicture.returnBlobCentres(), activePicture.returnBlobCentres());
 				place.SetMoustacheLocation();
 				place.SetYRotation();
@@ -177,6 +180,7 @@ public class LiveSCS : MonoBehaviour {
 		EdgeDetection ed = new EdgeDetection(segmentedImage);
 
 		ed.DetectEdges();
+		CvInvoke.Imshow("Segmented Image", segmentedImage);
 
 		BlobDetection blobDetector = new BlobDetection(ed.detectedEdges);
 

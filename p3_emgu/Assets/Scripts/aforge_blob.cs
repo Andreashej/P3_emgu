@@ -36,8 +36,8 @@ namespace Assets.Scripts {
 		// set filtering options
 		blobCounter.FilterBlobs = true;
 	
-		blobCounter.MinWidth = 20;
-		blobCounter.MinHeight = 10;
+		blobCounter.MinWidth = 25;
+		blobCounter.MinHeight = 15;
 		blobCounter.MaxHeight = 100;
 		blobCounter.MaxWidth = 220;
 		
