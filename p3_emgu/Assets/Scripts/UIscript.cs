@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using Assets.Scripts;
+using System;
 
 public class UIscript : MonoBehaviour {
 
@@ -43,6 +44,12 @@ public class UIscript : MonoBehaviour {
 			case "chaplin(Clone)":
 				moustache_active.GetComponent<Transform>().position = new Vector3(LiveSCS.place.GetLocation().X, LiveSCS.place.GetLocation().Y - 70, -20);
 				break;
+			case "tomSelleck(Clone)":
+				moustache_active.GetComponent<Transform>().position = new Vector3(LiveSCS.place.GetLocation().X + 10, LiveSCS.place.GetLocation().Y - 5, -20);
+				break;
+			case "handlebar(Clone)":
+				moustache_active.GetComponent<Transform>().position = new Vector3(LiveSCS.place.GetLocation().X + 10, LiveSCS.place.GetLocation().Y, -20);
+				break;
 			default:
 				break;
 		}
@@ -51,6 +58,7 @@ public class UIscript : MonoBehaviour {
         foreach (Renderer mesh in polymesh) {
             mesh.material = mat;
         }
+		Application.CaptureScreenshot(PhotoName());
     }
 
     void Update() {
@@ -70,4 +78,10 @@ public class UIscript : MonoBehaviour {
 			}
         }
     }
+
+	public string PhotoName () {
+		return string.Format("{0}/Resources/Evaluation/photo_{1}_with_moustache.png",
+			Application.dataPath,
+			DateTime.Now.ToString("dd-MM-yyyy_HH-mm-ss"));
+	}
 }

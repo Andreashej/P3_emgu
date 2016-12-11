@@ -23,7 +23,7 @@ public class EdgeDetection {
 		detectedEdges = detectedEdges.Canny(10, 230);
 		
 		Mat element = CvInvoke.GetStructuringElement(ElementShape.Cross, new System.Drawing.Size(3,3), new System.Drawing.Point(-1,-1));
-		MCvScalar scalar = new MCvScalar(20);
+		MCvScalar scalar = new MCvScalar(255); //Tested with value 20, but should probably be 255, since it's the pixel value.
 		
 		detectedEdges = detectedEdges.MorphologyEx(MorphOp.Close, element, new System.Drawing.Point(-1, -1), 12, BorderType.Replicate, scalar);
 
@@ -38,21 +38,5 @@ public class EdgeDetection {
 	public float getWidth() {
 		return srcImg.Width;
 	}
-
-	public Texture2D ReturnAsTexture() {
-		Texture2D img = new Texture2D(detectedEdges.Width, detectedEdges.Height);
-
-		for (int y = 0; y < img.height; y++) {
-			for (int x = 0; x < img.width; x++) {
-				Color color = new Color((float)detectedEdges[y,x].Intensity/256, (float)detectedEdges[y,x].Intensity/256, (float)detectedEdges[y,x].Intensity/256);
-				img.SetPixel(x, y , color);
-			}
-		}
-		
-		img.Apply();
-
-		return img;
-	}
-
 
 }
