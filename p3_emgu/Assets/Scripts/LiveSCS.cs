@@ -1,12 +1,12 @@
 ﻿using Assets.Scripts;
-using Emgu.CV;
-using Emgu.CV.Structure;
-using Emgu.CV.CvEnum;
 using System;
 using System.Drawing;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using Emgu.CV;
+using Emgu.CV.Structure;
+using Emgu.CV.CvEnum;
 
 public class LiveSCS : MonoBehaviour {
 	WebCamTexture webcamTexture;
@@ -19,19 +19,13 @@ public class LiveSCS : MonoBehaviour {
 	BlobDetection referencePicture = new BlobDetection();
 	BlobDetection activePicture = new BlobDetection();
 
-	// Use this for initialization
+	// Initialization
 	void Start () {
 		webcamTexture = new WebCamTexture(resWidth,resHeight);
 		Reset();
-
 	}
 
-	// Update is called once per frame
-	void Update () {
-		
-		
-	}
-
+	// Function for changing a Unity Texture2D to a byte type
 	public byte[] ReturnTextureAsBytes (WebCamTexture tex) {
 		Texture2D destTexture = new Texture2D(tex.width, tex.height, TextureFormat.RGB24, false);
 
@@ -45,6 +39,7 @@ public class LiveSCS : MonoBehaviour {
 		return bytes;
 	}
 
+	// Function for changing a greyscale image to a Unity Texture2D type
 	public Texture2D ReturnAsTexture (Image<Gray, byte> imgInput) {
 		Texture2D img = new Texture2D(imgInput.Width, imgInput.Height);
 		for (int y = 0; y < img.height; y++) {
@@ -60,6 +55,7 @@ public class LiveSCS : MonoBehaviour {
 		return img;
 	}
 
+	// Function for changing a RGB image to a Unity Texture2D type
 	public Texture2D ReturnAsTexture (Image<Rgb, byte> imgInput) {
 		Texture2D img = new Texture2D(imgInput.Width, imgInput.Height);
 		for (int y = 0; y < img.height; y++) {
@@ -77,13 +73,14 @@ public class LiveSCS : MonoBehaviour {
 
 	public void takePhoto() {
 		byte[] bytes = ReturnTextureAsBytes(webcamTexture);
-
 		Image<Rgb, byte> outputImage;
 
 		activePicture = TakePicture(bytes);
 		MemoryStream memoryStream = new MemoryStream(bytes);
 		Bitmap bmp = new Bitmap(memoryStream);
 		outputImage = new Image<Rgb, byte>(bmp);
+
+		// Write to console the amount of BLOBs found
 		Debug.Log(activePicture.returnBlobCentres().Count);
 
 		if (activePicture.returnBlobCentres().Count == 3) {
@@ -91,9 +88,11 @@ public class LiveSCS : MonoBehaviour {
 			place.SetMoustacheLocation();
 			place.SetXRotationNoReference();
 
-			Debug.Log("Position: " + place.GetLocation() + " zRotation: " + place.GetZRotation() + " xRotation: " + place.GetXRotation());
+			// Write to console the location and rotation of the BLOBs
+			Debug.Log("Position: " + place.GetLocation() + " xRotation: " + place.GetXRotation());
 		}
 
+		// Draw a dot on the BLOB centres
 		foreach (Point center in activePicture.returnBlobCentres()) {
 
 			for (int i = 0; i < 5; i++) {
@@ -102,21 +101,22 @@ public class LiveSCS : MonoBehaviour {
 				}
 			}
 		}
-
+			
 		GetComponent<RectTransform>().Rotate(new Vector3(0, 180, 180));
 		
-			GetComponent<RectTransform>().sizeDelta = new Vector2(outputImage.Width, outputImage.Height);
-			Texture2D tex = ReturnAsTexture(outputImage);
-			rawImage.texture = tex;
-			rawImage.material.mainTexture = tex;
-			webcamActive = false;
+		GetComponent<RectTransform>().sizeDelta = new Vector2(outputImage.Width, outputImage.Height);
+		Texture2D tex = ReturnAsTexture(outputImage);
+		rawImage.texture = tex;
+		rawImage.material.mainTexture = tex;
+		webcamActive = false;
 					
 		
 		firstPress++;
 		outputImage.Save(PhotoName());
 
 	}
-	
+
+	// Function for resetting the shown image
 	public void Reset() {
 		if (!webcamActive) {
 			GetComponent<RectTransform>().Rotate(new Vector3(0, 180, 180));
@@ -128,20 +128,20 @@ public class LiveSCS : MonoBehaviour {
 		webcamActive = true;
 	}
 
+	// Taking a picture
 	public BlobDetection TakePicture(byte[] bytes) {
+		
+		// Go through the skincolor segmentation
 		SkinColorSegmentation scs = new SkinColorSegmentation(bytes);
-
 		Image<Gray,byte> segmentedImage = scs.GetSkinRegion();
-
 		segmentedImage = segmentedImage.ThresholdBinaryInv(new Gray(150), new Gray(255));
 
+		// Go through the edge detection
 		EdgeDetection ed = new EdgeDetection(segmentedImage);
-
 		ed.DetectEdges();
-		//CvInvoke.Imshow("Segmented Image", segmentedImage);
 
+		// Go through the BLOB detection
 		BlobDetection blobDetector = new BlobDetection(ed.detectedEdges);
-
 		blobDetector.DetectBlobs();
 
 		return blobDetector;
@@ -152,5 +152,4 @@ public class LiveSCS : MonoBehaviour {
 			Application.dataPath,
 			DateTime.Now.ToString("dd-MM-yyyy_HH-mm-ss"));
 	}
-
 }

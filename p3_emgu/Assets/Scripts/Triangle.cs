@@ -87,7 +87,6 @@ namespace Assets.Scripts
 			double a = rightEye.Y - leftEye.Y;
 			double b = rightEye.X - leftEye.X;
 			return a / b;
-			
         }
 
 		public Point GetMouth () {

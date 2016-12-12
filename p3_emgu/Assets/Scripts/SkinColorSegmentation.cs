@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Drawing;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.CV.CvEnum;
-using System.IO;
-using System.Drawing;
 
 namespace Assets.Scripts
 {
@@ -25,7 +25,6 @@ namespace Assets.Scripts
 			Bitmap bmp = new Bitmap(ms);
 			Image<Bgr, byte> img = new Image<Bgr, byte>(bmp);
 			source = img.Mat;
-			
 		}
 
         private bool RuleRGB(double R, double G, double B)
@@ -59,8 +58,6 @@ namespace Assets.Scripts
             Image<Gray, Byte> resultImage = result.ToImage<Gray, Byte>();
             Mat srcYCbCr = new Mat();
             Mat srcHSV = new Mat();
-
-            
 
             CvInvoke.CvtColor(source, srcYCbCr, ColorConversion.Bgr2YCrCb);
             source.ConvertTo(srcHSV, DepthType.Cv32F);
@@ -103,9 +100,6 @@ namespace Assets.Scripts
                     }
                 }
             }
-			//resultImage = resultImage.Dilate(3);
-			//resultImage = resultImage.Erode(5);
-			
 
             return resultImage;
         } 

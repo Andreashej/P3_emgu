@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using Assets.Scripts;
 using System;
+using Assets.Scripts;
 
 public class UIscript : MonoBehaviour {
 
@@ -21,7 +21,6 @@ public class UIscript : MonoBehaviour {
 		UIActive = true;
 		UIWidth = getCanvasSize.canvasWidth / 2;
 		UIHeight = getCanvasSize.canvasHeight / 2;
-		//Debug.Log(UIWidth);
 	}
 
     public void canvasClick() {
