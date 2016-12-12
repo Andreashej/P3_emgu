@@ -101,10 +101,14 @@ public class LiveSCS : MonoBehaviour {
 				}
 			}
 		}
-			
+		
+		//Rotate the canvas so the image is not upside-down and mirrored	
 		GetComponent<RectTransform>().Rotate(new Vector3(0, 180, 180));
 		
+		//Set the size of the canvas to the same as the image.
 		GetComponent<RectTransform>().sizeDelta = new Vector2(outputImage.Width, outputImage.Height);
+
+		//Apply the image taken to the canvas.
 		Texture2D tex = ReturnAsTexture(outputImage);
 		rawImage.texture = tex;
 		rawImage.material.mainTexture = tex;
@@ -147,6 +151,7 @@ public class LiveSCS : MonoBehaviour {
 		return blobDetector;
 	}
 
+	//Function that returns path and date - used for saving photos.
 	public string PhotoName () {
 		return string.Format("{0}/Resources/Evaluation/photo_{1}.png",
 			Application.dataPath,

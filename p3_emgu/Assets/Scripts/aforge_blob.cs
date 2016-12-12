@@ -49,10 +49,14 @@ namespace Assets.Scripts {
 
 			// Go through each BLOB
 			foreach (Blob blob in blobs) {
+				//Calculate the width/height ratio of each blob
+				float blobRatio = (float)blob.Rectangle.Width / (float)blob.Rectangle.Height;
 
+				//Determine if the blob is within the allowed ratio of mouth and eyes.
 				bool mouthRatio = ((float)3.5 < blobRatio && (float)8 > blobRatio);
 				bool eyeRatio = ((float)1.2 < blobRatio && (float) 3.5 >= blobRatio);
 
+				//Blobs are only processed if they are within the allowed ratios.
 				if (mouthRatio || eyeRatio) {
 					List<IntPoint> leftPoints, rightPoints, edgePoints = new List<IntPoint>();
 					System.Drawing.Point blobCenter;
@@ -71,14 +75,16 @@ namespace Assets.Scripts {
 					int avgX = 0;
 					int avgY = 0;
 
+					//Add all edgepoints in the convex hull.
 					foreach (IntPoint edge in edgePoints) {
 						avgX += edge.X;
 						avgY += edge.Y;
 					}
-
+					//Divide all edgepoint with the amount of edgepoint to find weigted center.
 					avgX /= edgePoints.Count;
 					avgY /= edgePoints.Count;
 
+					//Create a point to return to the placement class.
 					blobCenter = new System.Drawing.Point(avgX, avgY);
 
 					blobCentres.Add(blobCenter);

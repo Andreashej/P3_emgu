@@ -17,6 +17,7 @@ public class UIscript : MonoBehaviour {
 
     public bool UIActive = false;
 
+	//Get the dimentions of the canvas
     public void displayUI() {	
 		UIActive = true;
 		UIWidth = getCanvasSize.canvasWidth / 2;
@@ -28,14 +29,18 @@ public class UIscript : MonoBehaviour {
 		GameObject.Destroy(moustache_active);
     }
 
+	//Function used to remove an instantiated moustache.
     public void instantiateMoustache() {
         if (moustache_active != null) {
             GameObject.Destroy(moustache_active);
         }
 
+		//Create new moustache and the calculated position
 		moustache_active = GameObject.Instantiate(moustache, new Vector3(LiveSCS.place.GetLocation().X, LiveSCS.place.GetLocation().Y, -20),Quaternion.identity) as GameObject;
+		//Apply the calculated rotation to moustache.
 		moustache_active.GetComponent<Transform>().Rotate(0, 0, (float)LiveSCS.place.GetXRotation());
 
+		//Offsetting moustaches so they are centered correctly.
 		switch(moustache_active.name) {
 			case "monocle(Clone)":
 				moustache_active.GetComponent<Transform>().position = new Vector3(LiveSCS.place.GetEyeLocation().X, LiveSCS.place.GetEyeLocation().Y, -20);
@@ -52,14 +57,10 @@ public class UIscript : MonoBehaviour {
 			default:
 				break;
 		}
-
-		polymesh = GetComponentsInChildren<Renderer>();
-        foreach (Renderer mesh in polymesh) {
-            mesh.material = mat;
-        }
+		//Save the picture with moustache - for documentation purposes (and fun)
 		Application.CaptureScreenshot(PhotoName());
     }
-
+	//If the UIActive variable is true, the buttons to choose moustache are shown
     void Update() {
         if (UIActive) {
             panel = GameObject.Find("UIPanel");
@@ -77,7 +78,7 @@ public class UIscript : MonoBehaviour {
 			}
         }
     }
-
+	//Generate name for the photo with moustache
 	public string PhotoName () {
 		return string.Format("{0}/Resources/Evaluation/photo_{1}_with_moustache.png",
 			Application.dataPath,
