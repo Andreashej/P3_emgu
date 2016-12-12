@@ -13,6 +13,7 @@ namespace Assets.Scripts
         Point leftEye, rightEye, mouth;
         double area;
         
+        //Costructor that gets the center point of blobs, then calculates the area of the triangle.
         public Triangle(List<Point> blobs)
         {
 			leftEye = blobs[1];
@@ -21,16 +22,19 @@ namespace Assets.Scripts
 			SetAreaHeron();
         }
         
+        //Calculates the distance between two points
         public double PointDistance(Point a, Point b)
         {
             return Math.Sqrt(Math.Pow((b.X - a.X), 2) + Math.Pow((b.Y - a.Y), 2));
         }
 
+        //Gets a direction vector between two points
         public Point GetDirectionFromAToB(Point a, Point b)
         {
             return new Point((b.X - a.X), (b.Y - a.Y));
         }
         
+        //Calculates the area of a triangle using Heron's formula
         public void SetAreaHeron()
         {
             double a = PointDistance(leftEye, rightEye);
@@ -41,11 +45,14 @@ namespace Assets.Scripts
             area = Math.Sqrt(s * (s - a) * (s - b) * (s - c));
         }
 
+        //Returns the area
         public double GetArea()
         {
             return area;
         }
         
+        //Gets the basepoint of the height of the triangle
+        //Uses the definition of lines and calculates where the line between the eyes and the height line cross.
         public Point GetHeightBase()
         {
             double a1 = rightEye.Y - leftEye.Y;
@@ -73,6 +80,7 @@ namespace Assets.Scripts
             }
         }
 
+        //Calculates the distances between the left/right eyes and the base of the height of the triangle.
         public double[] GetEyeToBase()
         {
             Point HeightBase = GetHeightBase();
@@ -82,6 +90,7 @@ namespace Assets.Scripts
             return result;
         }
 
+        //Calculates the tangent of the angle of the line between the eyes and a horizontal line.
         public double GetTangent()
         {
 			double a = rightEye.Y - leftEye.Y;
@@ -89,10 +98,12 @@ namespace Assets.Scripts
 			return a / b;
         }
 
+        //Returns the position of the mouth
 		public Point GetMouth () {
 			return mouth;
 		}
 
+        //Returns the position of the eyes
 		public Point[] GetEyes () {
 			Point[] eyes = { leftEye, rightEye};
 			return eyes;

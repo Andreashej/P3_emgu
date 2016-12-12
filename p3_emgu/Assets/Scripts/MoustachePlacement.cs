@@ -11,16 +11,19 @@ namespace Assets.Scripts
         double zRotation, xRotation;
 		Point moustacheLocation;
 
+        //Constructor that gets the center point of the blobs and uses them to initialize the triangles.
         public MoustachePlacement(List<Point> referencePoints, List<Point> workingImagePoints)
         {
 			workingImage = new Triangle(workingImagePoints);
         }
 
+        //Calculates the Z axis rotation of the moustache. The naming is off, cause we used a "rotated" coordinate system in our heads when starting the code.
 		public void SetXRotationNoReference () {
 			double workYRot = Math.Atan(workingImage.GetTangent());
 			xRotation = RadToDeg(workYRot);
 		}
 			
+        //Calculates the position of the moustache using the Points as vectors.
 		public void SetMoustacheLocation() 
 		{
 			Point mouth = workingImage.GetMouth();
@@ -35,14 +38,17 @@ namespace Assets.Scripts
 			return rad * 180 / Math.PI;
 		}
 
+        //Returns the Z axis rotation (naming wrong)
 		public double GetXRotation() {
 			return xRotation;
 		}
 
+        //Returns the location of the moustache
 		public Point GetLocation() {
 			return moustacheLocation;
 		}
 
+        //Returns the location of an eye (for placing the monocle)
 		public Point GetEyeLocation () {
 			return new Point(1280-workingImage.GetEyes()[1].X, 720-workingImage.GetEyes()[1].Y);
 		}
