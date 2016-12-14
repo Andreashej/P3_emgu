@@ -15,7 +15,6 @@ namespace Assets.Scripts {
 		Bitmap image;
 		Texture2D tex;
 		Blob[] blobs;
-		GrahamConvexHull hullFinder;
 		BitmapData data;
 		List<System.Drawing.Point> blobCentres = new List<System.Drawing.Point>();
 		BlobCounter blobCounter = new BlobCounter();
@@ -66,10 +65,6 @@ namespace Assets.Scripts {
 
 					edgePoints.AddRange(leftPoints);
 					edgePoints.AddRange(rightPoints);
-
-
-					// BLOB's convex hull
-					List<IntPoint> hull = hullFinder.FindHull( edgePoints );
 
 					// Find center point
 					int avgX = 0;

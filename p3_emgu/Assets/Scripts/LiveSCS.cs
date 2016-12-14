@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using Emgu.CV;
 using Emgu.CV.Structure;
-using Emgu.CV.CvEnum;
 
 public class LiveSCS : MonoBehaviour {
 	WebCamTexture webcamTexture;
